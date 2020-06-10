@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SpaceServer.Properties {
+namespace SpaceServer.Business.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SpaceServer.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpaceServer.Properties.Text", typeof(Text).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpaceServer.Business.Properties.Text", typeof(Text).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,20 @@ namespace SpaceServer.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Сокет добавлен c ID.
+        ///   Ищет локализованную строку, похожую на Команда не найдена.
         /// </summary>
-        public static string AddSocket {
+        public static string CommandNotFound {
             get {
-                return ResourceManager.GetString("AddSocket", resourceCulture);
+                return ResourceManager.GetString("CommandNotFound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Подключен WebSocket.
+        ///   Ищет локализованную строку, похожую на Игровая сущьность не найдена.
         /// </summary>
-        public static string WebSocketConnected {
+        public static string EntityNotFound {
             get {
-                return ResourceManager.GetString("WebSocketConnected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Отключен WebSocket.
-        /// </summary>
-        public static string WebSocketDisonnected {
-            get {
-                return ResourceManager.GetString("WebSocketDisonnected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на .
-        /// </summary>
-        public static string ы {
-            get {
-                return ResourceManager.GetString("ы", resourceCulture);
+                return ResourceManager.GetString("EntityNotFound", resourceCulture);
             }
         }
     }

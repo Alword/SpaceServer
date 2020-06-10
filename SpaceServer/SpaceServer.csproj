@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SpaceServer.Business\SpaceServer.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Text.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

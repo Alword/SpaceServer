@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Serilog;
+using SpaceServer.Business;
 using SpaceServer.Properties;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -13,11 +16,15 @@ namespace SpaceServer.Middleware
     {
         private readonly RequestDelegate next;
         private readonly WSConnections manager;
-
+        private readonly List<CommandsHandler> servers;
         public WebSocketServerMiddleware(RequestDelegate next, WSConnections manager)
         {
             this.manager = manager;
             this.next = next;
+            this.servers = new List<CommandsHandler>
+            {
+                new CommandsHandler(new GameState())
+            };
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -37,9 +44,11 @@ namespace SpaceServer.Middleware
                         Log.Information($"Message: {Encoding.UTF8.GetString(buffer, 0, result.Count)}");
                         return;
                     }
-                    if (result.MessageType == WebSocketMessageType.Binary) 
+                    if (result.MessageType == WebSocketMessageType.Binary)
                     {
-
+                        // find user server
+                        var commands = servers.First();
+                        commands[buffer[0]].Invoke(buffer[1..]);
                     }
                     else if (result.MessageType == WebSocketMessageType.Close)
                     {

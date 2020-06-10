@@ -117,17 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddSocket" xml:space="preserve">
-    <value>Сокет добавлен c ID</value>
-    <comment>AddSocket: WebSocket added with ID</comment>
+  <data name="CommandNotFound" xml:space="preserve">
+    <value>Команда не найдена</value>
   </data>
-  <data name="WebSocketConnected" xml:space="preserve">
-    <value>Подключен WebSocket</value>
-  </data>
-  <data name="WebSocketDisonnected" xml:space="preserve">
-    <value>Отключен WebSocket</value>
-  </data>
-  <data name="ы" xml:space="preserve">
-    <value />
+  <data name="EntityNotFound" xml:space="preserve">
+    <value>Игровая сущьность не найдена</value>
   </data>
 </root>

@@ -21,9 +21,10 @@ namespace SpaceServer.Business.Commands
             SpawnEntity spawnEntity = new SpawnEntity();
             spawnEntity.TryParse(body);
 
-            gameState.Entities.Add(new Entity()
+            gameState.Add(new Entity()
             {
-                Transform = new Float3(spawnEntity.x,spawnEntity.y)
+                Transform = new Float3(spawnEntity.x, spawnEntity.y),
+                TypeId = spawnEntity.id
             });
         }
     }

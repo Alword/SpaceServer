@@ -9,14 +9,26 @@ namespace SpaceServer.Business
 {
     public class CommandsHandler
     {
-        private readonly Dictionary<int, ICommand> commands;
+        private readonly Dictionary<byte, ICommand> commands;
 
         public CommandsHandler(GameState gameState)
         {
-            commands = new Dictionary<int, ICommand>
+            commands = new Dictionary<byte, ICommand>
             {
                 {0x1,new SpawnEntityCommand(gameState)}
             };
+        }
+
+        public ICommand this[byte id]
+        {
+            get
+            {
+                if (commands.ContainsKey(id))
+                {
+                    return commands[id];
+                }
+                return BaseCommand.Empty;
+            }
         }
     }
 }

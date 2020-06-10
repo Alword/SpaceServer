@@ -8,7 +8,7 @@ namespace SpaceServer.Business.Packets
 {
     public struct SpawnEntity : IPacket
     {
-        public int id;
+        public uint id;
         public int x;
         public int y;
 
