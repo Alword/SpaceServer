@@ -1,17 +1,14 @@
 ﻿using SpaceServer.Business.Abstractions;
 using SpaceServer.Business.Commands;
-using SpaceServer.Business.Packets;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceServer.Business
 {
-    public class CommandsHandler
+    public class InGameCommands
     {
         private readonly Dictionary<byte, ICommand> commands;
 
-        public CommandsHandler(GameState gameState)
+        public InGameCommands(GameState gameState)
         {
             commands = new Dictionary<byte, ICommand>
             {

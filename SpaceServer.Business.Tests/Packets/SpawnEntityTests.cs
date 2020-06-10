@@ -1,8 +1,5 @@
 ﻿using SpaceServer.Business.Models;
 using SpaceServer.Business.Packets;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace SpaceServer.Business.Tests.Packets
@@ -18,7 +15,7 @@ namespace SpaceServer.Business.Tests.Packets
         {
             SpawnEntity spawnEntity = new SpawnEntity()
             {
-                id = eId,
+                typeId = eId,
                 x = eX,
                 y = eY
             };

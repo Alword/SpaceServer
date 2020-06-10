@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SpaceServer.Mathematic
+﻿namespace SpaceServer.Mathematic
 {
     public struct Float3
     {

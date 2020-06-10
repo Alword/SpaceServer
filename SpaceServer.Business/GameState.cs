@@ -21,18 +21,7 @@ namespace SpaceServer.Business
             Entities = new List<Entity>();
         }
 
-        public void Join(string connId, WebSocket webSocket)
-        {
-            Player player = new Player(connId, webSocket);
-            Players.Add(player);
-        }
 
-        public void Leave(string connId)
-        {
-            var player = Players.FirstOrDefault(d => d.ConnId == connId);
-            if (player != null)
-                Players.Remove(player);
-        }
 
         public Entity Add(Entity entity)
         {
@@ -40,7 +29,7 @@ namespace SpaceServer.Business
             Entities.Add(gameEntity);
             Broadcast(new SpawnEntityQuery(new SpawnEntity()
             {
-                id = gameEntity.EntityId,
+                typeId = gameEntity.EntityId,
                 x = (int)(gameEntity.Transform.X * 100),
                 y = (int)(gameEntity.Transform.Y * 100)
             })).Start();

@@ -1,12 +1,6 @@
-﻿using SpaceServer.Business.Abstractions;
-using SpaceServer.Business.Models;
+﻿using SpaceServer.Business.Models;
 using SpaceServer.Business.Packets;
 using SpaceServer.Mathematic;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Transactions;
 
 namespace SpaceServer.Business.Commands
 {
@@ -24,7 +18,7 @@ namespace SpaceServer.Business.Commands
             gameState.Add(new Entity()
             {
                 Transform = new Float3(spawnEntity.x, spawnEntity.y),
-                TypeId = spawnEntity.id
+                TypeId = spawnEntity.typeId
             });
         }
     }

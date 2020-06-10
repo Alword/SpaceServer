@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceServer.Business.Models
 {
@@ -43,6 +41,14 @@ namespace SpaceServer.Business.Models
         {
             var (value, offset) = Varint.Decode(buf);
             var intValue = (int)value;
+            buf = buf[offset..];
+            return intValue;
+        }
+
+        public static uint ReadUInt(ref byte[] buf)
+        {
+            var (value, offset) = Varint.Decode(buf);
+            var intValue = (uint)value;
             buf = buf[offset..];
             return intValue;
         }

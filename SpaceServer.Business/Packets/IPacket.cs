@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SpaceServer.Business.Packets
+﻿namespace SpaceServer.Business.Packets
 {
     public interface IPacket
     {
