@@ -8,10 +8,10 @@ namespace SpaceServer.Business.Tests.Packets
     {
         [Theory]
         [InlineData(1, 2, 3)]
-        [InlineData(-1, -2, -3)]
-        [InlineData(int.MaxValue, int.MaxValue, int.MaxValue)]
-        [InlineData(int.MinValue, int.MinValue, int.MinValue)]
-        public void ConvertSpawnEntity(int eId, int eX, int eY)
+        [InlineData(0, -2, -3)]
+        [InlineData(uint.MaxValue, int.MaxValue, int.MaxValue)]
+        [InlineData(uint.MinValue, int.MinValue, int.MinValue)]
+        public void ConvertSpawnEntity(uint eId, int eX, int eY)
         {
             SpawnEntity spawnEntity = new SpawnEntity()
             {
@@ -20,12 +20,12 @@ namespace SpaceServer.Business.Tests.Packets
                 y = eY
             };
             var bytes = spawnEntity.ToByteArray();
-            (ulong id, int n1) = Varint.Decode(bytes);
-            (ulong x, int n2) = Varint.Decode(bytes[n1..]);
-            (ulong y, int n3) = Varint.Decode(bytes[(n1 + n2)..]);
-            Assert.Equal(eId, (int)id);
-            Assert.Equal(eX, (int)x);
-            Assert.Equal(eY, (int)y);
+            uint id = Varint.ReadUInt(ref bytes);
+            int x = Varint.ReadInt(ref bytes);
+            int y = Varint.ReadInt(ref bytes);
+            Assert.Equal(eId, id);
+            Assert.Equal(eX, x);
+            Assert.Equal(eY, y);
         }
     }
 }
