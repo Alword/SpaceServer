@@ -2,8 +2,8 @@
 {
     public interface IPacket
     {
-        public byte[] ToByteArray();
-        public bool TryParse(byte[] buf);
-        public bool TryRead(ref byte[] buf);
+        byte[] ToByteArray();
+        bool TryParse(byte[] buf);
+        bool TryRead(ref byte[] buf);
     }
 }

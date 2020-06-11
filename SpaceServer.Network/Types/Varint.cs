@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceServer.Network.Extentions;
+using System;
 
 namespace SpaceServer.Network.Types
 {
@@ -16,7 +17,7 @@ namespace SpaceServer.Network.Types
             }
             buf[n] = (byte)x;
             n++;
-            return buf[0..n];
+            return buf.ToArray(0, n);
         }
 
         public static (ulong x, int n) Decode(byte[] buf)
@@ -41,7 +42,7 @@ namespace SpaceServer.Network.Types
         {
             var (value, offset) = Decode(buf);
             var intValue = (int)value;
-            buf = buf[offset..];
+            buf = buf.ToArray(offset); // array.AsSpan().Slice(i, array.Length - i).ToArray()
             return intValue;
         }
 
@@ -49,7 +50,7 @@ namespace SpaceServer.Network.Types
         {
             var (value, offset) = Decode(buf);
             var intValue = (uint)value;
-            buf = buf[offset..];
+            buf = buf.ToArray(offset);
             return intValue;
         }
     }
