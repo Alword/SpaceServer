@@ -8,7 +8,9 @@ namespace SpaceServer.Business.Extentions
     {
         public static void Join(this GameState state, string connId, WebSocket webSocket)
         {
-            Player player = new Player(connId, webSocket, state.Players.GenerateId());
+            uint id = state.Players.GenerateId();
+            Player player = new Player(connId, webSocket, id);
+            state.ConnPlayerId.Add(connId, id);
             state.Players.Add(player);
         }
 
@@ -16,7 +18,10 @@ namespace SpaceServer.Business.Extentions
         {
             var player = state.Players.FirstOrDefault(d => d.ConnId == connId);
             if (player != null)
+            {
                 state.Players.Remove(player);
+                state.ConnPlayerId.Remove(connId);
+            }
         }
     }
 }

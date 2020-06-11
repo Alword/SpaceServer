@@ -22,14 +22,19 @@ namespace SpaceServer.Business
         {
             Players = new List<Player>();
             Entities = new List<Entity>();
+            ConnPlayerId = new Dictionary<string, uint>();
         }
 
-        public async Task Broadcast(IQuery command)
+        public void Broadcast(IQuery command)
         {
+            List<Task> messages = new List<Task>(Players.Count);
             foreach (Player player in Players)
             {
-                await player.WebSocket.SendAsync(command.ToByteArray(), WebSocketMessageType.Binary, true, CancellationToken.None);
+                messages.Add(player
+                    .WebSocket
+                    .SendAsync(command.ToByteArray(), WebSocketMessageType.Binary, true, CancellationToken.None));
             }
+            Task.WaitAll(messages.ToArray());
         }
     }
 }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SpaceServer.Business.Extentions
 {
@@ -16,12 +17,14 @@ namespace SpaceServer.Business.Extentions
         {
             Entity gameEntity = new Entity(state.Entities.GenerateId(), entity);
             state.Entities.Add(gameEntity);
-            state.Broadcast(new SpawnEntityQuery(new SpawnEntity()
-            {
-                typeId = gameEntity.Id,
-                x = (int)(gameEntity.Transform.X * 100),
-                z = (int)(gameEntity.Transform.Y * 100)
-            }, state.ConnPlayerId[connId])).Start();
+            Task.Run(() => state.Broadcast(
+                new SpawnEntityQuery(
+                    new SpawnEntity()
+                    {
+                        typeId = gameEntity.Id,
+                        x = (int)(gameEntity.Transform.X + 2),
+                        z = (int)(gameEntity.Transform.Y + 2)
+                    }, state.ConnPlayerId[connId])));
             return gameEntity;
         }
 

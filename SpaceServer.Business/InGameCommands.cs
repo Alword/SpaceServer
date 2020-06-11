@@ -1,15 +1,18 @@
 ﻿using SpaceServer.Business.Commands;
+using SpaceServer.Business.Extentions;
 using SpaceServer.Network.Abstractions;
 using System.Collections.Generic;
+using System.Net.WebSockets;
 
 namespace SpaceServer.Business
 {
     public class InGameCommands
     {
+        private readonly GameState gameState;
         private readonly Dictionary<byte, ICommand> commands;
-
         public InGameCommands(GameState gameState)
         {
+            this.gameState = gameState;
             commands = new Dictionary<byte, ICommand>
             {
                 {0x1,new SpawnEntityCommand(gameState)}
@@ -27,5 +30,8 @@ namespace SpaceServer.Business
                 return BaseCommand.Empty;
             }
         }
+
+        public void Join(string connId, WebSocket webSocket) => gameState.Join(connId, webSocket);
+        public void Leave(string connId) => gameState.Leave(connId);
     }
 }

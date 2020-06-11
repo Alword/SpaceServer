@@ -32,9 +32,16 @@ namespace SpaceServer.Middleware
             if (context.WebSockets.IsWebSocketRequest)
             {
                 WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
+
                 string connId = manager.AddSocket(webSocket, context.Connection.Id);
+
                 Log.Information($"{Text.WebSocketConnected} - {connId}");
+
                 await SendConnIdAsync(webSocket, connId);
+
+                // todo select server
+                var playerServer = servers.First();
+                playerServer.Join(connId, webSocket);
 
                 await Receive(webSocket, async (result, buffer) =>
                 {
@@ -47,8 +54,7 @@ namespace SpaceServer.Middleware
                     if (result.MessageType == WebSocketMessageType.Binary)
                     {
                         // find user server
-                        var commands = servers.First();
-                        commands[buffer[0]].Invoke(buffer[1..], connId);
+                        playerServer[buffer[0]].Invoke(buffer[1..], connId);
                     }
                     else if (result.MessageType == WebSocketMessageType.Close)
                     {
@@ -58,6 +64,7 @@ namespace SpaceServer.Middleware
 
                         Log.Information($"{Text.WebSocketDisonnected} - {connId}");
 
+                        playerServer.Leave(connId);
                         return;
                     }
                 });

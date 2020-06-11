@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SpaceServer.Network.Requests
 {
-    public abstract class BaseRequest : BaseQuery
+    public abstract class BaseRequest : BaseQuery, IRequest
     {
         protected byte[] body;
         public override byte[] Body()
