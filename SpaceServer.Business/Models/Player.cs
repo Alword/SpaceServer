@@ -2,14 +2,14 @@
 
 namespace SpaceServer.Business.Models
 {
-    public class Player
+    public class Player : Uniq
     {
         public string ConnId { get; private set; }
         public WebSocket WebSocket { get; private set; }
-        public Player(string connId, WebSocket webSocket)
+        public Player(string connId, WebSocket webSocket, uint playerId) : base(playerId)
         {
-            this.ConnId = connId;
             this.WebSocket = webSocket;
+            this.ConnId = connId;
         }
     }
 }

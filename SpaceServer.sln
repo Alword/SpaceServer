@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceServer", "SpaceServer\SpaceServer.csproj", "{AFDD14E7-31A6-4532-8559-E2C0FD2EA886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceServer.Business", "SpaceServer.Business\SpaceServer.Business.csproj", "{B2A65261-2813-4682-8665-313A0FDCA432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceServer.Business", "SpaceServer.Business\SpaceServer.Business.csproj", "{B2A65261-2813-4682-8665-313A0FDCA432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceServer.Mathematic", "SpaceServer.Mathematic\SpaceServer.Mathematic.csproj", "{402595EF-FAA3-41AB-B4AC-0DC2536C6895}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceServer.Mathematic", "SpaceServer.Mathematic\SpaceServer.Mathematic.csproj", "{402595EF-FAA3-41AB-B4AC-0DC2536C6895}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{739AD2CD-89CD-416A-90EE-4DD4EA3F6C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceServer.Business.Tests", "SpaceServer.Business.Tests\SpaceServer.Business.Tests.csproj", "{537055EB-4DEE-4612-879C-BF35068FF9D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceServer.Business.Tests", "SpaceServer.Business.Tests\SpaceServer.Business.Tests.csproj", "{537055EB-4DEE-4612-879C-BF35068FF9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceServer.Network", "SpaceServer.Network\SpaceServer.Network.csproj", "{7BC13191-2181-4BF6-8A96-CE120C34741C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{537055EB-4DEE-4612-879C-BF35068FF9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{537055EB-4DEE-4612-879C-BF35068FF9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{537055EB-4DEE-4612-879C-BF35068FF9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

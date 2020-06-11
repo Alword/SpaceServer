@@ -1,4 +1,4 @@
-﻿namespace SpaceServer.Business.Packets
+﻿namespace SpaceServer.Network.Abstractions
 {
     public interface IPacket
     {

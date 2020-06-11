@@ -1,6 +1,6 @@
 ﻿using Serilog;
-using SpaceServer.Business.Abstractions;
 using SpaceServer.Business.Properties;
+using SpaceServer.Network.Abstractions;
 
 namespace SpaceServer.Business.Commands
 {
@@ -13,12 +13,12 @@ namespace SpaceServer.Business.Commands
         }
 
         public static ICommand Empty => new EmptyCommand();
-        public abstract void Invoke(byte[] body);
+        public abstract void Invoke(byte[] body, string connId);
     }
 
     public class EmptyCommand : ICommand
     {
-        public void Invoke(byte[] body)
+        public void Invoke(byte[] body, string connId)
         {
             Log.Error(Text.CommandNotFound);
         }

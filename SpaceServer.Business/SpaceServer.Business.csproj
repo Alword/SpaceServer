@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SpaceServer.Mathematic\SpaceServer.Mathematic.csproj" />
+    <ProjectReference Include="..\SpaceServer.Network\SpaceServer.Network.csproj" />
   </ItemGroup>
 
   <ItemGroup>

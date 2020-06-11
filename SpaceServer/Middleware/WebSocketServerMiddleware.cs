@@ -48,7 +48,7 @@ namespace SpaceServer.Middleware
                     {
                         // find user server
                         var commands = servers.First();
-                        commands[buffer[0]].Invoke(buffer[1..]);
+                        commands[buffer[0]].Invoke(buffer[1..], connId);
                     }
                     else if (result.MessageType == WebSocketMessageType.Close)
                     {

@@ -1,5 +1,5 @@
-﻿using SpaceServer.Business.Models;
-using SpaceServer.Business.Packets;
+﻿using SpaceServer.Network.Packets;
+using SpaceServer.Network.Types;
 using Xunit;
 
 namespace SpaceServer.Business.Tests.Packets
@@ -17,7 +17,7 @@ namespace SpaceServer.Business.Tests.Packets
             {
                 typeId = eId,
                 x = eX,
-                y = eY
+                z = eY
             };
             var bytes = spawnEntity.ToByteArray();
             uint id = Varint.ReadUInt(ref bytes);

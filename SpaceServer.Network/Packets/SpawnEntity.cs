@@ -1,20 +1,21 @@
-﻿using SpaceServer.Business.Models;
+﻿using SpaceServer.Network.Abstractions;
+using SpaceServer.Network.Types;
 using System.Collections.Generic;
 
-namespace SpaceServer.Business.Packets
+namespace SpaceServer.Network.Packets
 {
     public struct SpawnEntity : IPacket
     {
         public uint typeId;
         public int x;
-        public int y;
+        public int z;
 
         public byte[] ToByteArray()
         {
             List<byte> buf = new List<byte>(sizeof(int) * 3);
             buf.AddRange(Varint.Encode(typeId));
             buf.AddRange(Varint.Encode((uint)x));
-            buf.AddRange(Varint.Encode((uint)y));
+            buf.AddRange(Varint.Encode((uint)z));
             return buf.ToArray();
         }
 
@@ -28,7 +29,7 @@ namespace SpaceServer.Business.Packets
         {
             typeId = Varint.ReadUInt(ref buf);
             x = Varint.ReadInt(ref buf);
-            y = Varint.ReadInt(ref buf);
+            z = Varint.ReadInt(ref buf);
             return true;
         }
     }

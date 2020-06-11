@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace SpaceServer.Business.Models
+namespace SpaceServer.Network.Types
 {
     public class Varint
     {
         public static byte[] Encode(ulong x)
         {
-            var buf = new byte[sizeof(UInt64)];
+            var buf = new byte[sizeof(ulong)];
             var n = 0;
             for (n = 0; x > 127; n++)
             {
@@ -39,7 +39,7 @@ namespace SpaceServer.Business.Models
 
         public static int ReadInt(ref byte[] buf)
         {
-            var (value, offset) = Varint.Decode(buf);
+            var (value, offset) = Decode(buf);
             var intValue = (int)value;
             buf = buf[offset..];
             return intValue;
@@ -47,7 +47,7 @@ namespace SpaceServer.Business.Models
 
         public static uint ReadUInt(ref byte[] buf)
         {
-            var (value, offset) = Varint.Decode(buf);
+            var (value, offset) = Decode(buf);
             var intValue = (uint)value;
             buf = buf[offset..];
             return intValue;

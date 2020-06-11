@@ -1,5 +1,5 @@
-﻿using SpaceServer.Business.Abstractions;
-using SpaceServer.Business.Commands;
+﻿using SpaceServer.Business.Commands;
+using SpaceServer.Network.Abstractions;
 using System.Collections.Generic;
 
 namespace SpaceServer.Business

@@ -1,6 +1,6 @@
 ﻿using SpaceServer.Business.Models;
-using SpaceServer.Business.Packets;
 using SpaceServer.Mathematic;
+using SpaceServer.Network.Packets;
 
 namespace SpaceServer.Business.Commands
 {
@@ -17,7 +17,7 @@ namespace SpaceServer.Business.Commands
 
             gameState.Add(new Entity()
             {
-                Transform = new Float3(spawnEntity.x, spawnEntity.y),
+                Transform = new Float3(spawnEntity.x, spawnEntity.z),
                 TypeId = spawnEntity.typeId
             });
         }
