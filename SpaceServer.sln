@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{739AD2CD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceServer.Business.Tests", "SpaceServer.Business.Tests\SpaceServer.Business.Tests.csproj", "{537055EB-4DEE-4612-879C-BF35068FF9D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceServer.Network", "SpaceServer.Network\SpaceServer.Network.csproj", "{7BC13191-2181-4BF6-8A96-CE120C34741C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceServer.Network", "SpaceServer.Network\SpaceServer.Network.csproj", "{7BC13191-2181-4BF6-8A96-CE120C34741C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceServer.Network.Tests", "SpaceServer.Network.Tests\SpaceServer.Network.Tests.csproj", "{E4C14253-06A5-44CD-BEB8-98DB4AA48AAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +43,17 @@ Global
 		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC13191-2181-4BF6-8A96-CE120C34741C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4C14253-06A5-44CD-BEB8-98DB4AA48AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4C14253-06A5-44CD-BEB8-98DB4AA48AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4C14253-06A5-44CD-BEB8-98DB4AA48AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4C14253-06A5-44CD-BEB8-98DB4AA48AAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{537055EB-4DEE-4612-879C-BF35068FF9D5} = {739AD2CD-89CD-416A-90EE-4DD4EA3F6C3C}
+		{E4C14253-06A5-44CD-BEB8-98DB4AA48AAA} = {739AD2CD-89CD-416A-90EE-4DD4EA3F6C3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9E2C453-C898-446B-A9F9-80F555F46608}

@@ -30,9 +30,10 @@ namespace SpaceServer.Business
             List<Task> messages = new List<Task>(Players.Count);
             foreach (Player player in Players)
             {
-                messages.Add(player
-                    .WebSocket
-                    .SendAsync(command.ToByteArray(), WebSocketMessageType.Binary, true, CancellationToken.None));
+                messages.Add(player.WebSocket.SendAsync(
+                    command.ToByteArray(),
+                    WebSocketMessageType.Binary,
+                    true, CancellationToken.None));
             }
             Task.WaitAll(messages.ToArray());
         }

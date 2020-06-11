@@ -20,12 +20,13 @@ namespace SpaceServer.Business.Tests.Packets
                 z = eY
             };
             var bytes = spawnEntity.ToByteArray();
-            uint id = Varint.ReadUInt(ref bytes);
-            int x = Varint.ReadInt(ref bytes);
-            int y = Varint.ReadInt(ref bytes);
-            Assert.Equal(eId, id);
-            Assert.Equal(eX, x);
-            Assert.Equal(eY, y);
+
+            var recive = new SpawnEntity();
+            recive.TryRead(ref bytes);
+
+            Assert.Equal(eId, recive.typeId);
+            Assert.Equal(eX, recive.x);
+            Assert.Equal(eY, recive.z);
         }
     }
 }

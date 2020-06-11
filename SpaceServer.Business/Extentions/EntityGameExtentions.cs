@@ -22,8 +22,8 @@ namespace SpaceServer.Business.Extentions
                     new SpawnEntity()
                     {
                         typeId = gameEntity.Id,
-                        x = (int)(gameEntity.Transform.X + 2),
-                        z = (int)(gameEntity.Transform.Y + 2)
+                        x = (int)(gameEntity.Transform.X),
+                        z = (int)(gameEntity.Transform.Y)
                     }, state.ConnPlayerId[connId])));
             return gameEntity;
         }
