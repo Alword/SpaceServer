@@ -6,7 +6,7 @@ namespace SpaceServer.Network.Queries
 {
     public class SpawnEntityQuery : BaseQuery
     {
-        public override byte QueryId => 0x01;
+        public override byte Id => 0x01;
 
         private readonly SpawnEntity spawnEntity;
         private readonly uint playerId;

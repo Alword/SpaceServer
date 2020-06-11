@@ -1,4 +1,5 @@
-﻿using SpaceServer.Business.Models;
+﻿using SpaceServer.Business.Extentions;
+using SpaceServer.Business.Models;
 using SpaceServer.Mathematic;
 using SpaceServer.Network.Packets;
 
@@ -10,7 +11,7 @@ namespace SpaceServer.Business.Commands
         {
         }
 
-        public override void Invoke(byte[] body)
+        public override void Invoke(byte[] body, string connId)
         {
             SpawnEntity spawnEntity = new SpawnEntity();
             spawnEntity.TryParse(body);
@@ -19,7 +20,7 @@ namespace SpaceServer.Business.Commands
             {
                 Transform = new Float3(spawnEntity.x, spawnEntity.z),
                 TypeId = spawnEntity.typeId
-            });
+            }, connId);
         }
     }
 }

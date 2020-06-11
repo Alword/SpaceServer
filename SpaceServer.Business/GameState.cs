@@ -24,34 +24,7 @@ namespace SpaceServer.Business
             Entities = new List<Entity>();
         }
 
-        public Entity Add(Entity entity, string connId)
-        {
-            Entity gameEntity = new Entity(Entities.GenerateId(), entity);
-            Entities.Add(gameEntity);
-            Broadcast(new SpawnEntityQuery(new SpawnEntity()
-            {
-                typeId = gameEntity.Id,
-                x = (int)(gameEntity.Transform.X * 100),
-                z = (int)(gameEntity.Transform.Y * 100)
-            }, ConnPlayerId[connId])).Start();
-            return gameEntity;
-        }
-
-        public void Destroy(uint entityId)
-        {
-            var e = Entities.SingleOrDefault(d => d.Id == entityId);
-            if (e == null)
-            {
-                Log.Information($"{nameof(GameState)}.{nameof(Destroy)}.{Text.EntityNotFound}");
-            }
-            else
-            {
-                Entities.Remove(e);
-                Log.Information($"{nameof(GameState)}.{nameof(Destroy)}.{e.Id}");
-            }
-        }
-
-        private async Task Broadcast(IQuery command)
+        public async Task Broadcast(IQuery command)
         {
             foreach (Player player in Players)
             {

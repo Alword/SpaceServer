@@ -2,7 +2,7 @@
 {
     public interface IQuery
     {
-        public byte QueryId { get; }
+        public byte Id { get; }
         public byte[] Body();
         public byte[] ToByteArray();
     }
