@@ -10,6 +10,13 @@ namespace SpaceServer.Network.Packets
         public int x;
         public int z;
 
+        public SpawnEntity(ref byte[] buf)
+        {
+            typeId = Varint.ReadUInt(ref buf);
+            x = Varint.ReadInt(ref buf);
+            z = Varint.ReadInt(ref buf);
+        }
+
         public byte[] ToByteArray()
         {
             List<byte> buf = new List<byte>(sizeof(int) * 3);

@@ -2,6 +2,8 @@
 using SpaceServer.Business.Models;
 using SpaceServer.Mathematic;
 using SpaceServer.Network.Packets;
+using SpaceServer.Network.Queries;
+using System.Threading.Tasks;
 
 namespace SpaceServer.Business.Commands
 {
@@ -16,11 +18,16 @@ namespace SpaceServer.Business.Commands
             SpawnEntity spawnEntity = new SpawnEntity();
             spawnEntity.TryParse(body);
 
-            gameState.Add(new Entity()
+            var entity = gameState.Add(new Entity()
             {
                 Transform = new Float3(spawnEntity.x, spawnEntity.z),
                 TypeId = spawnEntity.typeId
             }, connId);
+
+            // TODO: Add entity id
+            var playerid = gameState.ConnPlayerId[connId];
+            var query = new SpawnEntityQuery(spawnEntity, playerid, entity.Id);
+            gameState.Broadcast(query);
         }
     }
 }

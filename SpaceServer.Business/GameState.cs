@@ -27,15 +27,17 @@ namespace SpaceServer.Business
 
         public void Broadcast(IQuery command)
         {
-            List<Task> messages = new List<Task>(Players.Count);
-            foreach (Player player in Players)
+            Task.Run(() =>
             {
-                messages.Add(player.WebSocket.SendAsync(
-                    command.ToByteArray(),
-                    WebSocketMessageType.Binary,
-                    true, CancellationToken.None));
-            }
-            Task.WaitAll(messages.ToArray());
+                var players = Players.ToArray();
+                Task[] sendTasks = new Task[Players.Count];
+
+                for (int i = 0; i < players.Length; i++)
+                {
+                    sendTasks[i] = players[i].SendAsync(command);
+                }
+                Task.WaitAll(sendTasks);
+            });
         }
     }
 }

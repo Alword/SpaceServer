@@ -17,14 +17,6 @@ namespace SpaceServer.Business.Extentions
         {
             Entity gameEntity = new Entity(state.Entities.GenerateId(), entity);
             state.Entities.Add(gameEntity);
-            Task.Run(() => state.Broadcast(
-                new SpawnEntityQuery(
-                    new SpawnEntity()
-                    {
-                        typeId = gameEntity.Id,
-                        x = (int)(gameEntity.Transform.X),
-                        z = (int)(gameEntity.Transform.Y)
-                    }, state.ConnPlayerId[connId])));
             return gameEntity;
         }
 
