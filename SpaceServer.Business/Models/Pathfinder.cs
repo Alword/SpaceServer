@@ -35,6 +35,8 @@ namespace SpaceServer.Business.Models
 
         public List<PathNode> FindPath(Int2 start, Int2 end)
         {
+            if (!InRange(start) || !InRange(end)) return new List<PathNode>() { };
+
             PathNode startNode = grid[start];
             PathNode endNode = grid[end];
 
@@ -133,6 +135,7 @@ namespace SpaceServer.Business.Models
                 currentNode = currentNode.CameFromNode;
                 nodes.Add(currentNode);
             }
+            nodes.Remove(currentNode);
             nodes.Reverse();
             return nodes;
         }
@@ -161,7 +164,7 @@ namespace SpaceServer.Business.Models
             // [] [ ] []
             // [] [X] []
             if (currentNode.y - 1 >= 0) neighbours.Add(grid[currentNode.x, currentNode.y - 1]);
-            if (currentNode.y + 1 <= grid.Height) neighbours.Add(grid[currentNode.x, currentNode.y + 1]);
+            if (currentNode.y + 1 < grid.Height) neighbours.Add(grid[currentNode.x, currentNode.y + 1]);
             return neighbours;
         }
 
@@ -169,7 +172,13 @@ namespace SpaceServer.Business.Models
         {
             neighbours.Add(grid[x, y]);
             if (y - 1 >= 0) neighbours.Add(grid[x, y - 1]);
-            if (y + 1 <= grid.Height) neighbours.Add(grid[x, y + 1]);
+            if (y + 1 < grid.Height) neighbours.Add(grid[x, y + 1]);
+        }
+
+        private bool InRange(Int2 pos)
+        {
+            return pos.X < grid.Width && pos.X >= 0
+                && pos.Y < grid.Height && pos.Y >= 0;
         }
     }
 }
