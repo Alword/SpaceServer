@@ -20,5 +20,13 @@
         }
 
         public static Float3 Zero { get => new Float3(0, 0, 0); }
+
+        public static Float3 operator *(Float3 vector, float a)
+        {
+            vector.X *= a;
+            vector.Y *= a;
+            vector.Z *= a;
+            return vector;
+        }
     }
 }

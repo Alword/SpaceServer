@@ -3,7 +3,6 @@ using SpaceServer.Business.Models;
 using SpaceServer.Mathematic;
 using SpaceServer.Network.Packets;
 using SpaceServer.Network.Queries;
-using System.Threading.Tasks;
 
 namespace SpaceServer.Business.Commands
 {

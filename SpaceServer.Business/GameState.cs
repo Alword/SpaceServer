@@ -1,15 +1,7 @@
-﻿using Serilog;
-using SpaceServer.Business.Models;
-using SpaceServer.Business.Properties;
-using SpaceServer.Network.Packets;
-using SpaceServer.Network.Queries;
+﻿using SpaceServer.Business.Models;
 using SpaceServer.Network.Abstractions;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Threading;
 using System.Threading.Tasks;
-using SpaceServer.Business.Extentions;
 
 namespace SpaceServer.Business
 {

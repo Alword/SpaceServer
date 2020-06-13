@@ -1,7 +1,4 @@
 ﻿using SpaceServer.Network.Queries;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace SpaceServer.Network.Tests.Queries
@@ -13,7 +10,7 @@ namespace SpaceServer.Network.Tests.Queries
         {
             // arrange
             var byteArray = new byte[] { 0, 12, 4, 0 };
-            
+
             // act
             SpawnEntityQuery spawnEntityQuery = new SpawnEntityQuery();
             spawnEntityQuery.TryRead(ref byteArray);

@@ -1,7 +1,6 @@
 ﻿using SpaceServer.Network.Abstractions;
 using SpaceServer.Network.Packets;
 using SpaceServer.Network.Types;
-using System;
 
 namespace SpaceServer.Network.Queries
 {

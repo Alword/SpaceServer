@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace SpaceServer.Network.Abstractions
+﻿namespace SpaceServer.Network.Abstractions
 {
     public interface IPacket
     {

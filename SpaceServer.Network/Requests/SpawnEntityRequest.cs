@@ -1,8 +1,4 @@
-﻿using SpaceServer.Network.Abstractions;
-using SpaceServer.Network.Packets;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SpaceServer.Network.Packets;
 
 namespace SpaceServer.Network.Requests
 {

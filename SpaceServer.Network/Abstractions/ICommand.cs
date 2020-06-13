@@ -2,6 +2,6 @@
 {
     public interface ICommand
     {
-        void Invoke(byte[] body,string connid);
+        void Invoke(byte[] body, string connid);
     }
 }

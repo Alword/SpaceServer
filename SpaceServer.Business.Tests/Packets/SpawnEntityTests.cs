@@ -1,5 +1,4 @@
 ﻿using SpaceServer.Network.Packets;
-using SpaceServer.Network.Types;
 using Xunit;
 
 namespace SpaceServer.Business.Tests.Packets

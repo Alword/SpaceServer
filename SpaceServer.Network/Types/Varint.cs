@@ -1,5 +1,4 @@
 ﻿using SpaceServer.Network.Extentions;
-using System;
 
 namespace SpaceServer.Network.Types
 {

@@ -1,13 +1,7 @@
 ﻿using Serilog;
 using SpaceServer.Business.Models;
 using SpaceServer.Business.Properties;
-using SpaceServer.Network.Packets;
-using SpaceServer.Network.Queries;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpaceServer.Business.Extentions
 {
