@@ -10,6 +10,7 @@ namespace SpaceServer.Business.Models
         private NavGrid<PathNode> grid;
         public readonly int x;
         public readonly int y;
+        public Int2 Pos { get => new Int2(x, y); }
 
         public int gCost;
         public int hCost;
@@ -34,11 +35,6 @@ namespace SpaceServer.Business.Models
         public void CalculateFCost()
         {
             fCost = gCost + hCost;
-        }
-
-        public Float3 GetWorldPosition()
-        {
-            return new Float3(x + 0.5f, 0, y + 0.5f) * grid.Size;
         }
 
         public PathNode[] GetRectangle(Int2 secondNode)

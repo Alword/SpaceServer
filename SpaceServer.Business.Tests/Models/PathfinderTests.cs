@@ -28,6 +28,11 @@ namespace SpaceServer.Business.Tests.Models
             Assert.False(path.Any());
         }
 
+
+        //
+        //[ ] [ ] [1]
+        //[ ] [0] [ ]
+        //[S] [ ] [ ]
         [Fact]
         public void FindPath_NoObstacle()
         {
@@ -35,14 +40,29 @@ namespace SpaceServer.Business.Tests.Models
             Pathfinder pathfinder = new Pathfinder(3, 3);
 
             // act
-            var path = pathfinder.FindPath(new Int2(0, 0), new Int2(2, 2));
+            List<Int2> path = pathfinder.FindPath(new Int2(0, 0), new Int2(2, 2));
 
             // assert
             Assert.Equal(2, path.Count);
-            Assert.Equal(1, path[0].x);
-            Assert.Equal(1, path[0].y);
-            Assert.Equal(2, path[1].x);
-            Assert.Equal(2, path[1].y);
+            Assert.Equal(new Int2(1, 1), path[0]);
+            Assert.Equal(new Int2(2, 2), path[1]);
+        }
+
+        //
+        //[ ] [ ] [2]
+        //[ ] [X] [1]
+        //[S] [0] [ ]
+        [Fact]
+        public void FindPath_Obstacle()
+        {
+            // arrange
+            Pathfinder pathfinder = new Pathfinder(3, 3);
+            pathfinder.AddObstacle(new Int2(1, 1));
+            // act
+            List<Int2> path = pathfinder.FindPath(new Int2(0, 0), new Int2(2, 2));
+            
+            // assert
+            Assert.Equal(3, path.Count);
         }
     }
 }

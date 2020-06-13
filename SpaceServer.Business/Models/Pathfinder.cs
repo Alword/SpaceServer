@@ -6,49 +6,49 @@ using System.Threading.Tasks;
 
 namespace SpaceServer.Business.Models
 {
-    public class Pathfinder
+    public partial class Pathfinder
     {
         private const int STRAIGHT_COST = 10;
         private const int DIAGONAL_COST = 14;
 
-        private readonly NavGrid<PathNode> grid;
+        private readonly NavGrid<PathNode> buildings;
         private List<PathNode> openList;
         private HashSet<PathNode> closedList;
 
         public Pathfinder(int width, int height, float cellSize = 1f)
         {
-            this.grid = new NavGrid<PathNode>(
+            this.buildings = new NavGrid<PathNode>(
                 width,
                 height,
                 cellSize,
                 (NavGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
 
-            Parallel.For(0, grid.Width, (x) =>
+            Parallel.For(0, buildings.Width, (x) =>
             {
-                for (int y = 0; y < grid.Height; y++)
+                for (int y = 0; y < buildings.Height; y++)
                 {
-                    PathNode pathNode = grid[x, y];
+                    PathNode pathNode = buildings[x, y];
                     pathNode.NeighbourList = GetNeighbours(pathNode);
                 }
             });
         }
 
-        public List<PathNode> FindPath(Int2 start, Int2 end)
+        public List<Int2> FindPath(Int2 start, Int2 end)
         {
-            if (!InRange(start) || !InRange(end)) return new List<PathNode>() { };
+            if (!InRange(start) || !InRange(end)) return new List<Int2>() { };
 
-            PathNode startNode = grid[start];
-            PathNode endNode = grid[end];
+            PathNode startNode = buildings[start];
+            PathNode endNode = buildings[end];
 
             openList = new List<PathNode>() { startNode };
 
             closedList = new HashSet<PathNode>();
 
-            Parallel.For(0, grid.Width, (x) =>
+            Parallel.For(0, buildings.Width, (x) =>
             {
-                for (int y = 0; y < grid.Height; y++)
+                for (int y = 0; y < buildings.Height; y++)
                 {
-                    PathNode pathNode = grid[x, y];
+                    PathNode pathNode = buildings[x, y];
                     pathNode.gCost = int.MaxValue;
                     pathNode.CalculateFCost();
                     pathNode.CameFromNode = null;
@@ -96,9 +96,9 @@ namespace SpaceServer.Business.Models
                 }
             }
             // out of nodes
-            return new List<PathNode>() { startNode };
+            return new List<Int2>() { };
         }
-
+ 
         private int CalculateDistance(PathNode start, PathNode end)
         {
             int xDistance = Math.Abs(start.x - end.x);
@@ -123,19 +123,19 @@ namespace SpaceServer.Business.Models
             return lowestCostNode;
         }
 
-        private List<PathNode> CalculatePath(PathNode endNode)
+        private List<Int2> CalculatePath(PathNode endNode)
         {
-            List<PathNode> nodes = new List<PathNode>
+            List<Int2> nodes = new List<Int2>
             {
-                endNode
+                endNode.Pos
             };
             PathNode currentNode = endNode;
             while (currentNode.CameFromNode != null)
             {
                 currentNode = currentNode.CameFromNode;
-                nodes.Add(currentNode);
+                nodes.Add(currentNode.Pos);
             }
-            nodes.Remove(currentNode);
+            nodes.Remove(currentNode.Pos);
             nodes.Reverse();
             return nodes;
         }
@@ -152,7 +152,7 @@ namespace SpaceServer.Business.Models
                 AddColumn(currentX, currentNode.y, neighbours);
             }
             currentX = currentNode.x + 1;
-            if (currentX < grid.Width)
+            if (currentX < buildings.Width)
             {
                 // [] [] [X]
                 // [] [] [X]
@@ -163,22 +163,22 @@ namespace SpaceServer.Business.Models
             // [] [X] []
             // [] [ ] []
             // [] [X] []
-            if (currentNode.y - 1 >= 0) neighbours.Add(grid[currentNode.x, currentNode.y - 1]);
-            if (currentNode.y + 1 < grid.Height) neighbours.Add(grid[currentNode.x, currentNode.y + 1]);
+            if (currentNode.y - 1 >= 0) neighbours.Add(buildings[currentNode.x, currentNode.y - 1]);
+            if (currentNode.y + 1 < buildings.Height) neighbours.Add(buildings[currentNode.x, currentNode.y + 1]);
             return neighbours;
         }
 
         private void AddColumn(int x, int y, List<PathNode> neighbours)
         {
-            neighbours.Add(grid[x, y]);
-            if (y - 1 >= 0) neighbours.Add(grid[x, y - 1]);
-            if (y + 1 < grid.Height) neighbours.Add(grid[x, y + 1]);
+            neighbours.Add(buildings[x, y]);
+            if (y - 1 >= 0) neighbours.Add(buildings[x, y - 1]);
+            if (y + 1 < buildings.Height) neighbours.Add(buildings[x, y + 1]);
         }
 
         private bool InRange(Int2 pos)
         {
-            return pos.X < grid.Width && pos.X >= 0
-                && pos.Y < grid.Height && pos.Y >= 0;
+            return pos.X < buildings.Width && pos.X >= 0
+                && pos.Y < buildings.Height && pos.Y >= 0;
         }
     }
 }
