@@ -5,14 +5,14 @@ namespace SpaceServer.Network.Packets
 {
     public class SpawnEntityClient : BasePacket
     {
-        public uint TypeId { get; private set; }
+        public int TypeId { get; private set; }
         public int X { get; private set; }
         public int Z { get; private set; }
-        public uint PlayerId { get; private set; }
-        public uint EntityId { get; private set; }
+        public int PlayerId { get; private set; }
+        public int EntityId { get; private set; }
 
         public SpawnEntityClient() { }
-        public SpawnEntityClient(uint typeId, int x, int z, uint playerId, uint entityId)
+        public SpawnEntityClient(int typeId, int x, int z, int playerId, int entityId)
         {
             this.TypeId = TypeId;
             this.X = x;
@@ -25,20 +25,20 @@ namespace SpaceServer.Network.Packets
         {
             return ArrayBuilder.Build<byte>(
                 Varint.Encode(TypeId),
-                Varint.Encode((uint)X),
-                Varint.Encode((uint)Z),
-                Varint.Encode((uint)PlayerId),
-                Varint.Encode((uint)EntityId)
+                Varint.Encode(X),
+                Varint.Encode(Z),
+                Varint.Encode(PlayerId),
+                Varint.Encode(EntityId)
                 );
         }
 
         public override bool TryRead(ref byte[] buf)
         {
-            TypeId = Varint.ReadUInt(ref buf);
+            TypeId = Varint.ReadInt(ref buf);
             X = Varint.ReadInt(ref buf);
             Z = Varint.ReadInt(ref buf);
-            PlayerId = Varint.ReadUInt(ref buf);
-            EntityId = Varint.ReadUInt(ref buf);
+            PlayerId = Varint.ReadInt(ref buf);
+            EntityId = Varint.ReadInt(ref buf);
             return true;
         }
     }

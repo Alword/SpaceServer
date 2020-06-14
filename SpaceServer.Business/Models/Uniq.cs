@@ -2,9 +2,9 @@
 {
     public class Uniq
     {
-        public uint Id { get; private set; }
+        public int Id { get; private set; }
 
-        public Uniq(uint id)
+        public Uniq(int id)
         {
             this.Id = id;
         }

@@ -8,7 +8,7 @@ namespace SpaceServer.Network.Packets
 {
     public class MoveEntityServer : BasePacket
     {
-        public uint[] EntityIds { get; private set; }
+        public int[] EntityIds { get; private set; }
         public int X { get; private set; }
         public int Y { get; private set; }
 
@@ -27,13 +27,13 @@ namespace SpaceServer.Network.Packets
 
         public override bool TryRead(ref byte[] buf)
         {
-            List<uint> data = new List<uint>();
+            List<int> data = new List<int>();
             while (buf.Length > 0)
             {
-                data.Add(Varint.ReadUInt(ref buf));
+                data.Add(Varint.ReadInt(ref buf));
             }
-            X = (int)data[data.Count - 1];
-            Y = (int)data[data.Count - 2];
+            X = data[data.Count - 1];
+            Y = data[data.Count - 2];
             data.RemoveAt(data.Count - 1);
             data.RemoveAt(data.Count - 2);
             EntityIds = data.ToArray();

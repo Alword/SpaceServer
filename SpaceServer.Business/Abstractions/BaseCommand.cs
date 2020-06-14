@@ -12,7 +12,6 @@ namespace SpaceServer.Business.Abstractions
         {
             this.gameState = gameState;
         }
-        public static ICommand Empty => new EmptyCommand();
         public virtual void Invoke(byte[] body, string connId)
         {
             var data = new T();
@@ -28,5 +27,6 @@ namespace SpaceServer.Business.Abstractions
         {
             Log.Error(Text.CommandNotFound);
         }
+        public static ICommand Void => new EmptyCommand();
     }
 }

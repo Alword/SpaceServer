@@ -9,7 +9,7 @@ namespace SpaceServer.Business.Models
     {
         public string ConnId { get; private set; }
         private WebSocket WebSocket { get; }
-        public Player(string connId, WebSocket webSocket, uint playerId) : base(playerId)
+        public Player(string connId, WebSocket webSocket, int playerId) : base(playerId)
         {
             this.WebSocket = webSocket;
             this.ConnId = connId;

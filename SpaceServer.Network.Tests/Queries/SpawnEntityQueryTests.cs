@@ -18,11 +18,11 @@ namespace SpaceServer.Network.Tests.Queries
             SpawnEntityQuery spawnEntityQuery = new SpawnEntityQuery(data);
 
             // assert
-            Assert.Equal<uint>(0, spawnEntityQuery.Data.TypeId);
+            Assert.Equal(0, spawnEntityQuery.Data.TypeId);
             Assert.Equal(12, spawnEntityQuery.Data.X);
             Assert.Equal(4, spawnEntityQuery.Data.Z);
-            Assert.Equal<uint>(0, spawnEntityQuery.Data.PlayerId);
-            Assert.Equal<uint>(0, spawnEntityQuery.Data.EntityId);
+            Assert.Equal(0, spawnEntityQuery.Data.PlayerId);
+            Assert.Equal(0, spawnEntityQuery.Data.EntityId);
         }
     }
 }

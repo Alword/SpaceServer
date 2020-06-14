@@ -5,12 +5,12 @@ namespace SpaceServer.Network.Packets
 {
     public class SpawnEntityServer : BasePacket
     {
-        public uint TypeId { get; private set; }
+        public int TypeId { get; private set; }
         public int X { get; private set; }
         public int Z { get; private set; }
         public SpawnEntityServer() { }
 
-        public SpawnEntityServer(uint typeId, int x, int z)
+        public SpawnEntityServer(int typeId, int x, int z)
         {
             TypeId = typeId;
             X = x;
@@ -21,14 +21,14 @@ namespace SpaceServer.Network.Packets
         {
             return ArrayBuilder.Build<byte>(
                 Varint.Encode(TypeId),
-                Varint.Encode((uint)X),
-                Varint.Encode((uint)Z)
+                Varint.Encode(X),
+                Varint.Encode(Z)
                 );
         }
 
         public override bool TryRead(ref byte[] buf)
         {
-            TypeId = Varint.ReadUInt(ref buf);
+            TypeId = Varint.ReadInt(ref buf);
             X = Varint.ReadInt(ref buf);
             Z = Varint.ReadInt(ref buf);
             return true;

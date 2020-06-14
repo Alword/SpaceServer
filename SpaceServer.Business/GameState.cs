@@ -9,12 +9,14 @@ namespace SpaceServer.Business
     {
         public List<Player> Players { get; private set; }
         public List<Entity> Entities { get; private set; }
-        public Dictionary<string, uint> ConnPlayerId { get; private set; }
+        public Dictionary<string, int> ConnPlayerId { get; private set; }
+        public Pathfinder Terrain { get; private set; }
         public GameState()
         {
             Players = new List<Player>();
             Entities = new List<Entity>();
-            ConnPlayerId = new Dictionary<string, uint>();
+            ConnPlayerId = new Dictionary<string, int>();
+            Terrain = new Pathfinder(100, 100);
         }
 
         public void Broadcast(IQuery command)

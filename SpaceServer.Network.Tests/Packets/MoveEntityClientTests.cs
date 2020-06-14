@@ -34,8 +34,8 @@ namespace SpaceServer.Network.Tests.Packets
             Assert.Empty(buf);
             Assert.Equal(8, actual.Movement.Length);
             Assert.Equal(8, actual.StepCount);
-            Assert.Equal<uint>(1, actual.EntityId);
-            Assert.Equal<uint>(2, actual.Time);
+            Assert.Equal(1, actual.EntityId);
+            Assert.Equal(2, actual.Time);
 
             for (int i = 0; i < sendDirections.Length; i++)
             {

@@ -10,13 +10,13 @@ namespace SpaceServer.Network.Packets
 {
     public class MoveEntityClient : BasePacket
     {
-        public uint EntityId { get; private set; }
-        public uint Time { get; private set; }
+        public int EntityId { get; private set; }
+        public int Time { get; private set; }
         public int StepCount { get; private set; }
         public MoveDirection[] Movement { get; private set; }
         private BitArray Steps { get; set; }
 
-        public MoveEntityClient(uint entityId, uint time, MoveDirection[] movement)
+        public MoveEntityClient(int entityId, int time, MoveDirection[] movement)
         {
             this.EntityId = entityId;
             this.Time = time;
@@ -51,8 +51,8 @@ namespace SpaceServer.Network.Packets
 
         public override bool TryRead(ref byte[] buf)
         {
-            EntityId = Varint.ReadUInt(ref buf);
-            Time = Varint.ReadUInt(ref buf);
+            EntityId = Varint.ReadInt(ref buf);
+            Time = Varint.ReadInt(ref buf);
             StepCount = Varint.ReadInt(ref buf);
             Steps = new BitArray(buf);
             buf = new byte[0];

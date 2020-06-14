@@ -29,7 +29,7 @@ namespace SpaceServer.Business
                 {
                     return commands[id];
                 }
-                return BaseCommand.Empty;
+                return EmptyCommand.Void;
             }
         }
 
