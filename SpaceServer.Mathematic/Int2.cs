@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO.MemoryMappedFiles;
-using System.Runtime.CompilerServices;
 
 namespace SpaceServer.Mathematic
 {

@@ -1,4 +1,5 @@
-﻿using SpaceServer.Network.Queries;
+﻿using SpaceServer.Network.Packets;
+using SpaceServer.Network.Queries;
 using Xunit;
 
 namespace SpaceServer.Network.Tests.Queries
@@ -9,17 +10,19 @@ namespace SpaceServer.Network.Tests.Queries
         public void TryReadTest()
         {
             // arrange
-            var byteArray = new byte[] { 0, 12, 4, 0 };
+            var byteArray = new byte[] { 0, 12, 4, 0, 0 };
 
+            var data = new SpawnEntityClient();
+            data.TryRead(ref byteArray);
             // act
-            SpawnEntityQuery spawnEntityQuery = new SpawnEntityQuery();
-            spawnEntityQuery.TryRead(ref byteArray);
+            SpawnEntityQuery spawnEntityQuery = new SpawnEntityQuery(data);
 
             // assert
-            Assert.Equal<uint>(0, spawnEntityQuery.spawnEntity.typeId);
-            Assert.Equal(12, spawnEntityQuery.spawnEntity.x);
-            Assert.Equal(4, spawnEntityQuery.spawnEntity.z);
-            Assert.Equal<uint>(0, spawnEntityQuery.playerId);
+            Assert.Equal<uint>(0, spawnEntityQuery.Data.TypeId);
+            Assert.Equal(12, spawnEntityQuery.Data.X);
+            Assert.Equal(4, spawnEntityQuery.Data.Z);
+            Assert.Equal<uint>(0, spawnEntityQuery.Data.PlayerId);
+            Assert.Equal<uint>(0, spawnEntityQuery.Data.EntityId);
         }
     }
 }

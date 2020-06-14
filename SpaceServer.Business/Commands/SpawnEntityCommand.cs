@@ -14,18 +14,19 @@ namespace SpaceServer.Business.Commands
 
         public override void Invoke(byte[] body, string connId)
         {
-            SpawnEntity spawnEntity = new SpawnEntity();
+            SpawnEntityServer spawnEntity = new SpawnEntityServer();
             spawnEntity.TryParse(body);
 
             var entity = gameState.Add(new Entity()
             {
-                Transform = new Float3(spawnEntity.x, spawnEntity.z),
-                TypeId = spawnEntity.typeId
+                Transform = new Float3(spawnEntity.X, spawnEntity.Z),
+                TypeId = spawnEntity.TypeId
             }, connId);
 
-            // TODO: Add entity id
             var playerid = gameState.ConnPlayerId[connId];
-            var query = new SpawnEntityQuery(spawnEntity, playerid, entity.Id);
+
+            var data = new SpawnEntityClient(entity.TypeId, spawnEntity.X, spawnEntity.Z, playerid, entity.Id);
+            var query = new SpawnEntityQuery(data);
             gameState.Broadcast(query);
         }
     }

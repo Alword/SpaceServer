@@ -10,22 +10,17 @@ namespace SpaceServer.Business.Tests.Packets
         [InlineData(0, -2, -3)]
         [InlineData(uint.MaxValue, int.MaxValue, int.MaxValue)]
         [InlineData(uint.MinValue, int.MinValue, int.MinValue)]
-        public void ConvertSpawnEntity(uint eId, int eX, int eY)
+        public void ConvertSpawnEntity(uint eId, int eX, int eZ)
         {
-            SpawnEntity spawnEntity = new SpawnEntity()
-            {
-                typeId = eId,
-                x = eX,
-                z = eY
-            };
+            SpawnEntityServer spawnEntity = new SpawnEntityServer(eId, eX, eZ);
             var bytes = spawnEntity.ToByteArray();
 
-            var recive = new SpawnEntity();
+            var recive = new SpawnEntityServer();
             recive.TryRead(ref bytes);
 
-            Assert.Equal(eId, recive.typeId);
-            Assert.Equal(eX, recive.x);
-            Assert.Equal(eY, recive.z);
+            Assert.Equal(eId, recive.TypeId);
+            Assert.Equal(eX, recive.X);
+            Assert.Equal(eZ, recive.Z);
         }
     }
 }

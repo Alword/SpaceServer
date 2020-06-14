@@ -4,6 +4,8 @@ namespace SpaceServer.Network.Types
 {
     public class Varint
     {
+        public static byte[] Encode(int x) => Encode((uint)x);
+
         public static byte[] Encode(ulong x)
         {
             var buf = new byte[sizeof(ulong)];

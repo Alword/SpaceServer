@@ -1,9 +1,7 @@
 ﻿using SpaceServer.Business.Models;
 using SpaceServer.Mathematic;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace SpaceServer.Business.Tests.Models
@@ -60,7 +58,7 @@ namespace SpaceServer.Business.Tests.Models
             pathfinder.AddObstacle(new Int2(1, 1));
             // act
             List<Int2> path = pathfinder.FindPath(new Int2(0, 0), new Int2(2, 2));
-            
+
             // assert
             Assert.Equal(3, path.Count);
         }

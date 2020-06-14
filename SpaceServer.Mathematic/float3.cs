@@ -12,11 +12,11 @@
             this.Z = z;
         }
 
-        public Float3(float x, float y)
+        public Float3(float x, float z)
         {
             this.X = x;
-            this.Y = y;
-            this.Z = 0;
+            this.Y = 0;
+            this.Z = z;
         }
 
         public static Float3 Zero { get => new Float3(0, 0, 0); }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 
 namespace SpaceServer.Network
@@ -17,6 +18,13 @@ namespace SpaceServer.Network
                 offset += length;
             }
             return result;
+        }
+
+        public static byte[] Build(BitArray bits)
+        {
+            byte[] ret = new byte[(bits.Length - 1) / 8 + 1];
+            bits.CopyTo(ret, 0);
+            return ret;
         }
     }
 }

@@ -98,7 +98,7 @@ namespace SpaceServer.Business.Models
             // out of nodes
             return new List<Int2>() { };
         }
- 
+
         private int CalculateDistance(PathNode start, PathNode end)
         {
             int xDistance = Math.Abs(start.x - end.x);

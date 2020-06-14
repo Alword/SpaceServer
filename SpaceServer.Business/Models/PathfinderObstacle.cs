@@ -1,8 +1,4 @@
 ﻿using SpaceServer.Mathematic;
-using SpaceServer.Network.Models;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SpaceServer.Business.Models
 {
