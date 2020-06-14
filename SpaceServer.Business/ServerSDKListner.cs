@@ -17,7 +17,7 @@ namespace SpaceServer.Business
             commands = new Dictionary<byte, ICommand>
             {
                 {0x1,new SpawnEntityCommand(gameState)},
-                {0x2,new SpawnEntityCommand(gameState)}
+                {0x2,new MoveEntityCommand(gameState)}
             };
         }
 

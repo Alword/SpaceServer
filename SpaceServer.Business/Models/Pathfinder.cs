@@ -178,7 +178,7 @@ namespace SpaceServer.Business.Models
         private bool InRange(Int2 pos)
         {
             return pos.X < buildings.Width && pos.X >= 0
-                && pos.Y < buildings.Height && pos.Y >= 0;
+                && pos.Z < buildings.Height && pos.Z >= 0;
         }
     }
 }

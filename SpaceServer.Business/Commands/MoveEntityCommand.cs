@@ -14,8 +14,16 @@ namespace SpaceServer.Business.Commands
 
         public override void Handle(string connId, MoveEntityServer data)
         {
-            //Int2 start = gameState.Entities
-            //gameState.Terrain.FindPath()
+            // TODO move all
+            // but now - move first
+
+            int entityId = data.EntityIds.First();
+            Int2 end = new Int2(data.X, data.Y);
+
+            var entity = gameState.Entities[entityId];
+            Int2 start = new Int2(entity.Transform.X, entity.Transform.Z);
+
+            var path = gameState.Terrain.FindPath(start, end);
         }
     }
 }

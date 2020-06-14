@@ -15,7 +15,7 @@ namespace SpaceServer.Business.Commands
         {
             var entity = gameState.Add(new Entity()
             {
-                Transform = new Float3(data.X, data.Z),
+                Transform = new Int2(data.X, data.Z),
                 TypeId = data.TypeId
             }, connId);
 

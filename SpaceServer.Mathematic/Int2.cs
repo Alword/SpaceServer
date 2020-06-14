@@ -5,18 +5,18 @@ namespace SpaceServer.Mathematic
     public struct Int2
     {
         public int X { get; set; }
-        public int Y { get; set; }
+        public int Z { get; set; }
 
         public Int2(int x, int y)
         {
             X = x;
-            Y = y;
+            Z = y;
         }
 
         public bool Equals(Int2 obj)
         {
             return X == obj.X &&
-                   Y == obj.Y;
+                   Z == obj.Z;
         }
 
         public override bool Equals(object obj)
@@ -27,7 +27,7 @@ namespace SpaceServer.Mathematic
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(X, Y);
+            return HashCode.Combine(X, Z);
         }
 
         public static bool operator ==(Int2 left, Int2 right)

@@ -5,7 +5,7 @@ namespace SpaceServer.Business.Models
     public class Entity : Uniq
     {
         public int TypeId { get; set; }
-        public Float3 Transform { get; set; }
+        public Int2 Transform { get; set; }
 
         public Entity(int id, Entity entity) : base(id)
         {

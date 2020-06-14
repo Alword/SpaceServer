@@ -41,12 +41,12 @@ namespace SpaceServer.Business.Models
         {
             Int2 firstNode = new Int2(x, y);
 
-            int capacity = (Math.Abs(firstNode.X - secondNode.X) + 1) * (Math.Abs(firstNode.Y - secondNode.Y) + 1);
+            int capacity = (Math.Abs(firstNode.X - secondNode.X) + 1) * (Math.Abs(firstNode.Z - secondNode.Z) + 1);
 
             int minX = Math.Min(firstNode.X, secondNode.X);
             int maxX = Math.Max(firstNode.X, secondNode.X);
-            int minY = Math.Min(firstNode.Y, secondNode.Y);
-            int maxY = Math.Max(firstNode.Y, secondNode.Y);
+            int minY = Math.Min(firstNode.Z, secondNode.Z);
+            int maxY = Math.Max(firstNode.Z, secondNode.Z);
 
             var pathNodes = new PathNode[capacity];
 

@@ -9,22 +9,22 @@ namespace SpaceServer.Business.Extentions
     {
         public static Entity Add(this GameState state, Entity entity, string connId)
         {
-            Entity gameEntity = new Entity(state.Entities.GenerateId(), entity);
-            state.Entities.Add(gameEntity);
+            int id = state.Entities.Values.GenerateId();
+            Entity gameEntity = new Entity(id, entity);
+            state.Entities.Add(id, gameEntity);
             return gameEntity;
         }
 
-        public static void Destroy(this GameState state, uint entityId)
+        public static void Destroy(this GameState state, int entityId)
         {
-            var e = state.Entities.SingleOrDefault(d => d.Id == entityId);
-            if (e == null)
+            if (state.Entities.ContainsKey(entityId))
             {
-                Log.Information($"{nameof(GameState)}.{nameof(Destroy)}.{Text.EntityNotFound}");
+                state.Entities.Remove(entityId);
+                Log.Information($"{nameof(GameState)}.{nameof(Destroy)}.{entityId}");
             }
             else
             {
-                state.Entities.Remove(e);
-                Log.Information($"{nameof(GameState)}.{nameof(Destroy)}.{e.Id}");
+                Log.Information($"{nameof(GameState)}.{nameof(Destroy)}.{Text.EntityNotFound}");
             }
         }
     }

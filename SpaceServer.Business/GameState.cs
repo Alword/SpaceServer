@@ -8,13 +8,13 @@ namespace SpaceServer.Business
     public class GameState
     {
         public List<Player> Players { get; private set; }
-        public List<Entity> Entities { get; private set; }
+        public Dictionary<int, Entity> Entities { get; private set; }
         public Dictionary<string, int> ConnPlayerId { get; private set; }
         public Pathfinder Terrain { get; private set; }
         public GameState()
         {
             Players = new List<Player>();
-            Entities = new List<Entity>();
+            Entities = new Dictionary<int, Entity>();
             ConnPlayerId = new Dictionary<string, int>();
             Terrain = new Pathfinder(100, 100);
         }

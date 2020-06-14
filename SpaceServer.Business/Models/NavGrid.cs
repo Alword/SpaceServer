@@ -42,8 +42,8 @@ namespace SpaceServer.Network.Models
 
         public T this[Int2 pos]
         {
-            get => this[pos.X, pos.Y];
-            set => this[pos.X, pos.Y] = value;
+            get => this[pos.X, pos.Z];
+            set => this[pos.X, pos.Z] = value;
         }
     }
 }
