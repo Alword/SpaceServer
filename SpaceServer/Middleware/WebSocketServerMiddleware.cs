@@ -16,14 +16,14 @@ namespace SpaceServer.Middleware
     {
         private readonly RequestDelegate next;
         private readonly WSConnections manager;
-        private readonly List<InGameCommands> servers;
+        private readonly List<ServerSDKListner> servers;
         public WebSocketServerMiddleware(RequestDelegate next, WSConnections manager)
         {
             this.manager = manager;
             this.next = next;
-            this.servers = new List<InGameCommands>
+            this.servers = new List<ServerSDKListner>
             {
-                new InGameCommands(new GameState())
+                new ServerSDKListner(new GameState())
             };
         }
 
